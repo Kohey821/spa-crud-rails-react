@@ -9,31 +9,33 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     Rails.cache.clear
   end
 
-  test "should create post" do
+  test "ポスト投函" do
     assert_difference('Post.count') do
       post posts_url, params: { post: {
-        title: 'title',
-        body: 'body',
+        title: 'タイトル',
+        body: 'ボディ',
       } }, as: :json
     end
 
     assert_response 201
   end
 
-  test "should show post" do
+  test "ポスト取得" do
     get post_url(@post), as: :json
+
     assert_response :success
   end
 
-  test "should update post" do
+  test "ポスト更新" do
     patch post_url(@post), params: { post: {
-      title: 'title updated',
-      body: 'body updated',
+      title: 'タイトル更新',
+      body: 'ボディ更新',
     } }, as: :json
+
     assert_response 200
   end
 
-  test "should destroy post" do
+  test "ポスト削除" do
     assert_difference('Post.count', -1) do
       delete post_url(@post), as: :json
     end
