@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     post = Post.new(post_params)
 
     if post.save
-      render json: post
+      render json: post, status: 201
     else
       render json: post.error
     end
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 
     post.destroy
 
-    render json: post
+    render json: post, status: 204
   end
 
   private
