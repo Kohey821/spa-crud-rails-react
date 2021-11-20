@@ -14,6 +14,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       post posts_url, params: { post: {
         title: 'タイトル',
         body: 'ボディ',
+        # TODO: image
       } }, as: :json
     end
 
@@ -30,6 +31,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     patch post_url(@post), params: { post: {
       title: 'タイトル更新',
       body: 'ボディ更新',
+      # TODO: image
     } }, as: :json
 
     assert_response 200
