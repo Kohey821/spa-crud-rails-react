@@ -15,14 +15,14 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
         title: 'タイトル',
         body: 'ボディ',
         # TODO: image
-      } }, as: :json
+      } }
     end
 
     assert_response 201
   end
 
   test "ポスト取得" do
-    get post_url(@post), as: :json
+    get post_url(@post)
 
     assert_response :success
   end
@@ -32,14 +32,14 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       title: 'タイトル更新',
       body: 'ボディ更新',
       # TODO: image
-    } }, as: :json
+    } }
 
     assert_response 200
   end
 
   test "ポスト削除" do
     assert_difference('Post.count', -1) do
-      delete post_url(@post), as: :json
+      delete post_url(@post)
     end
 
     assert_response 204
