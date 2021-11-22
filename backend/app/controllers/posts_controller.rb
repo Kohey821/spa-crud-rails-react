@@ -1,21 +1,23 @@
 class PostsController < ApplicationController
+  # NOTE: render jsonのmethods引数の公式ドキュメントはない
+
   def index
     posts = Post.all
 
-    render json: posts
+    render json: posts, methods: [:image_url]
   end
 
   def show
     post = get_post
 
-    render json: post
+    render json: post, methods: [:image_url]
   end
 
   def create
     post = Post.new(post_params)
 
     if post.save
-      render json: post, status: 201
+      render json: post, methods: [:image_url], status: 201
     else
       render json: post.error, status: 422
     end
@@ -25,7 +27,7 @@ class PostsController < ApplicationController
     post = get_post
 
     if post.update(post_params)
-      render json: post
+      render json: post, methods: [:image_url]
     else
       render json: post.error, status: 422
     end
@@ -36,7 +38,7 @@ class PostsController < ApplicationController
 
     post.destroy
 
-    render json: post, status: 204
+    render json: post, methods: [:image_url], status: 204
   end
 
   private
