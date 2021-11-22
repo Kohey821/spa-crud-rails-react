@@ -1,6 +1,14 @@
 import * as React from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Content from '../components/Content';
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  FormHelperText,
+  Input
+} from '@chakra-ui/react';
+import axios from 'axios';
 
 function New() {
   const [title, setTitle] = React.useState('');
@@ -37,30 +45,38 @@ function New() {
   }
 
   return (
-    <>
-      <p>
-        タイトル:{' '}
-        <input
+    <Content
+      title="投函"
+    >
+      <FormControl>
+        <FormLabel>
+          タイトル
+        </FormLabel>
+
+        <Input
           type="text"
           name="title"
           onChange={
             (e) => setTitle(e.target.value)
           }
         />
-      </p>
+      </FormControl>
 
-      <p>
-        本文:{' '}
-        <input
+      <FormControl mt="2">
+        <FormLabel>
+          本文
+        </FormLabel>
+
+        <Input
           type="text"
           name="body"
           onChange={
             (e) => setBody(e.target.value)
           }
         />
-      </p>
+      </FormControl>
 
-      <p>
+      <FormControl mt="2">
         <input
           type="file"
           name="image"
@@ -77,24 +93,30 @@ function New() {
             )
           }
         />
-        <label htmlFor="image">画像を選択</label>
-      </p>
+        <Button
+          as="label"
+          htmlFor="image"
+        >
+          画像を選択
+        </Button>
 
-      {image?.name && (
-        <p>
-          選択中の画像:{' '}
-          {image.name}
-        </p>
-      )}
+        {image?.name && (
+          <FormHelperText>
+            選択中の画像:{' '}
+            {image.name}
+          </FormHelperText>
+        )}
+      </FormControl>
 
-      <p>
-        <button
+      <FormControl mt="2">
+        <Button
           onClick={handlePost}
+          bgGradient="linear(to-tr, pink.500, purple.500)"
         >
           投函
-        </button>
-      </p>
-    </>
+        </Button>
+      </FormControl>
+    </Content>
   );
 }
 

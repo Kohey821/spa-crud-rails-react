@@ -1,8 +1,11 @@
+import Content from "../components/Content";
+
 function Index() {
   return (
-    <>
-      index
-    </>
+    <Content
+      title="一覧"
+    >
+    </Content>
   );
 }
 

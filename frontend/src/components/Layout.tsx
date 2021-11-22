@@ -1,21 +1,12 @@
-import {
-  Link,
-  Outlet,
-} from 'react-router-dom';
+import Main from './Main';
+import Navbar from './Navbar';
 
 function Layout() {
   return (
     <>
-      <nav>
-        <ul>
-          <li><Link to="/">一覧</Link></li>
-          <li><Link to="/new">投函</Link></li>
-        </ul>
-      </nav>
+      <Navbar />
 
-      <div>
-        <Outlet />
-      </div>
+      <Main />
     </>
   );
 }
