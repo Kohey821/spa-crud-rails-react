@@ -9,10 +9,7 @@ interface Props {
   title: string
 }
 
-function Content({
-  children,
-  title,
-}: Props) {
+function Content(props: Props) {
   return (
     <Box px="2" pb="2">
       <Heading
@@ -21,10 +18,10 @@ function Content({
         bgGradient="linear(to-tr, pink.500, purple.500)"
         bgClip="text"
       >
-        {title}
+        {props.title}
       </Heading>
 
-      {children}
+      {props.children}
     </Box>
   );
 }
