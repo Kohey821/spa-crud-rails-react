@@ -11,8 +11,7 @@ function Navbar() {
     <Flex
       align="center"
       p="2"
-      position="sticky"
-      top="0"
+      backdropFilter="blur(.25rem)"
     >
       <p>SPA投函</p>
 
