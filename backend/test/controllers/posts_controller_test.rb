@@ -11,12 +11,17 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "ポスト投函" do
     assert_difference('Post.count') do
-      post posts_url, params: { post: {
+      post posts_url, params: {
         title: 'タイトル',
         body: 'ボディ',
-        # TODO: image
-      } }
+        image: fixture_file_upload('post.png', 'image/png'),
+      }
     end
+
+    assert_equal(
+      @response.parsed_body['image_url'].split('/')[-1],
+      'post.png'
+    )
 
     assert_response 201
   end
@@ -28,11 +33,16 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "ポスト更新" do
-    patch post_url(@post), params: { post: {
+    patch post_url(@post), params: {
       title: 'タイトル更新',
       body: 'ボディ更新',
-      # TODO: image
-    } }
+      image: fixture_file_upload('post_update.png', 'image/png'),
+    }
+
+    assert_equal(
+      @response.parsed_body['image_url'].split('/')[-1],
+      'post_update.png'
+    )
 
     assert_response 200
   end
