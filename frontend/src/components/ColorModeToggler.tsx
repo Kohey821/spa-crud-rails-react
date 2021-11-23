@@ -8,7 +8,7 @@ import {
   SunIcon,
 } from '@chakra-ui/icons';
 
-function ColorModeToggler() {
+export default function ColorModeToggler() {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
@@ -23,5 +23,3 @@ function ColorModeToggler() {
     </Flex>
   );
 }
-
-export default ColorModeToggler;

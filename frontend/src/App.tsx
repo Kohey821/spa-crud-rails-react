@@ -9,7 +9,7 @@ import Index from './pages/Index';
 
 const New = React.lazy(() => import('./pages/New'));
 
-function App() {
+export default function App() {
   return (
     <ChakraProvider>
       <Routes>
@@ -28,5 +28,3 @@ function App() {
     </ChakraProvider>
   );
 }
-
-export default App;

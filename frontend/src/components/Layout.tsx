@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/react';
 import Main from './Main';
 import Navbar from './Navbar';
 
-function Layout() {
+export default function Layout() {
   return (
     <Box zIndex="1">
       <Box
@@ -19,5 +19,3 @@ function Layout() {
     </Box>
   );
 }
-
-export default Layout;

@@ -6,7 +6,7 @@ import {
 } from "@chakra-ui/react";
 import ColorModeToggler from './ColorModeToggler';
 
-function Navbar() {
+export default function Navbar() {
   return (
     <Flex
       align="center"
@@ -28,5 +28,3 @@ function Navbar() {
     </Flex>
   );
 }
-
-export default Navbar;

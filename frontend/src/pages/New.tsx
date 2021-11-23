@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 
-function New() {
+export default function New() {
   const [title, setTitle] = React.useState('');
   const [body, setBody] = React.useState('');
   const [image, setImage] = React.useState<File>();
@@ -119,5 +119,3 @@ function New() {
     </Content>
   );
 }
-
-export default New;

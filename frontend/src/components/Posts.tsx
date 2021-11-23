@@ -9,7 +9,7 @@ import Post, {
   Props as PostProps,
 } from './Post';
 
-function Posts() {
+export default function Posts() {
   const [posts, setPosts] = React.useState<PostProps[]>([]);
 
   React.useEffect(() => {
@@ -60,5 +60,3 @@ function Posts() {
     </>
   );
 }
-
-export default Posts;

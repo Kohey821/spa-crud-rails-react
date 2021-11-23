@@ -14,7 +14,7 @@ export interface Props {
   image_url: string
 }
 
-function Post(props: Props) {
+export default function Post(props: Props) {
   return (
     <Flex
       align="start"
@@ -43,5 +43,3 @@ function Post(props: Props) {
     </Flex>
   );
 }
-
-export default Post;

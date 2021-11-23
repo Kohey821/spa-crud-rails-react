@@ -1,7 +1,7 @@
 import Content from "../components/Content";
 import Posts from "../components/Posts";
 
-function Index() {
+export default function Index() {
   return (
     <Content
       title="一覧"
@@ -10,5 +10,3 @@ function Index() {
     </Content>
   );
 }
-
-export default Index;
