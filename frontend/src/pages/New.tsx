@@ -18,14 +18,12 @@ export default function New() {
   const navigate = useNavigate();
 
   async function handlePost() {
-    if (!(title && body && image)) return;
-
-    const { dir, log } = console;
+    if (!(title && body)) return;
 
     const data = new FormData();
     data.append('title', title);
     data.append('body', body);
-    data.append('image', image);
+    image && data.append('image', image);
 
     try {
       await axios({
@@ -37,9 +35,9 @@ export default function New() {
       navigate('/');
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        log(error.response?.data);
+        console.log(error.response);
       } else {
-        dir(error);
+        console.dir(error);
       }
     }
   }
