@@ -26,14 +26,16 @@ export default function Post(props: Props) {
       p="2"
       borderRadius="2"
     >
-      <Box as="a" href={href} w="16" flex="none">
-        <Image
-          src={`${process.env.REACT_APP_API_URL_ROOT}${props.image_url}`}
-          objectFit="cover"
-          w="100%"
-          h="100%"
-        />
-      </Box>
+      {props.image_url &&
+        <Box as="a" href={href} w="16" flex="none">
+          <Image
+            src={`${process.env.REACT_APP_API_URL_ROOT}${props.image_url}`}
+            objectFit="cover"
+            w="100%"
+            h="100%"
+          />
+        </Box>
+      }
 
       <Box ms="2" flex="auto">
         <Heading as="h2" fontSize="md">
