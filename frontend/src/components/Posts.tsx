@@ -31,11 +31,11 @@ export default function Posts() {
     })();
   }, []);
 
-  const postLoadings = [];
+  const postSkeletons = [];
   for (let i = 0; i < 10; i++) {
     const mt = i !== 0 ? 2 : 0;
 
-    postLoadings.push(
+    postSkeletons.push(
       <Box key={i} mt={mt} p="4" boxShadow="lg">
         <SkeletonCircle size="10" />
         <SkeletonText mt="2" noOfLines={4} spacing="2" />
@@ -55,7 +55,7 @@ export default function Posts() {
             ))}
           </>
         )
-        : postLoadings
+        : postSkeletons
       }
     </>
   );
