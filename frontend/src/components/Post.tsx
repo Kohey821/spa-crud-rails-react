@@ -1,3 +1,5 @@
+import { useHref } from 'react-router-dom';
+
 import {
   Box,
   Flex,
@@ -15,6 +17,8 @@ export interface Props {
 }
 
 export default function Post(props: Props) {
+  const href = useHref(`/${props.id}`);
+
   return (
     <Flex
       align="start"
@@ -22,7 +26,7 @@ export default function Post(props: Props) {
       p="2"
       borderRadius="2"
     >
-      <Box w="16" flex="none">
+      <Box as="a" href={href} w="16" flex="none">
         <Image
           src={`${process.env.REACT_APP_API_URL_ROOT}${props.image_url}`}
           objectFit="cover"
@@ -32,8 +36,15 @@ export default function Post(props: Props) {
       </Box>
 
       <Box ms="2" flex="auto">
-        <Heading as="h2" noOfLines={1} fontSize="xl">
-          {props.title}
+        <Heading as="h2" fontSize="md">
+          <Text
+            as="a"
+            href={href}
+            textDecoration="underline"
+            noOfLines={1}
+          >
+            {props.title}
+          </Text>
         </Heading>
 
         <Text as="p" noOfLines={2} fontSize="sm">

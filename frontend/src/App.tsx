@@ -8,18 +8,31 @@ import Layout from './components/Layout';
 import Index from './pages/Index';
 
 const New = React.lazy(() => import('./pages/New'));
+const Detail = React.lazy(() => import('./pages/Detail'));
 
 export default function App() {
+  const fallback = <>読み込み中...</>;
+
   return (
     <ChakraProvider>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Index />} />
+
           <Route
             path="new"
             element={
-              <React.Suspense fallback={<>読み込み中...</>}>
+              <React.Suspense fallback={fallback}>
                 <New />
+              </React.Suspense>
+            }
+          />
+
+          <Route
+            path="/:id"
+            element={
+              <React.Suspense fallback={fallback}>
+                <Detail />
               </React.Suspense>
             }
           />
