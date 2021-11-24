@@ -19,7 +19,7 @@ export default function New() {
 
   const navigate = useNavigate();
 
-  async function handlePost() {
+  const handlePost = async () => {
     if (!(title && body)) return;
 
     const data = new FormData();
