@@ -4,7 +4,6 @@ import Content from '../components/Content';
 import { Props as PostProps } from '../components/Post';
 import useAxios from '../hooks/useAxios';
 import {
-  Heading,
   Image,
   Text,
 } from '@chakra-ui/react';
