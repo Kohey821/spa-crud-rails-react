@@ -1,5 +1,5 @@
 import * as React from 'react';
-import axios from 'axios';
+import useAxios from '../hooks/useAxios';
 import {
   Box,
   SkeletonCircle,
@@ -11,25 +11,15 @@ import Post, {
 
 export default function Posts() {
   const [posts, setPosts] = React.useState<PostProps[]>([]);
-
+  const { executeAxios } = useAxios();
   React.useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await axios({
-          method: 'GET',
-          url: `${process.env.REACT_APP_API_URL}/posts`,
-        });
-
-        setPosts(data);
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          console.log(error.response);
-        } else {
-          console.dir(error);
-        }
-      }
-    })();
-  }, []);
+    executeAxios<PostProps[]>({
+      method: 'GET',
+      url: `${process.env.REACT_APP_API_URL}/posts`,
+    }, ({ data }) => {
+      setPosts(data);
+    });
+  }, [/* eslint-disable-line react-hooks/exhaustive-deps */]);
 
   const postSkeletons = [];
   for (let i = 0; i < 10; i++) {

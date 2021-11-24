@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Props as PostProps } from '../components/Post';
 import Content from '../components/Content';
 import {
   Button,
@@ -8,12 +9,13 @@ import {
   FormHelperText,
   Input
 } from '@chakra-ui/react';
-import axios from 'axios';
+import useAxios from '../hooks/useAxios';
 
 export default function New() {
   const [title, setTitle] = React.useState('');
   const [body, setBody] = React.useState('');
   const [image, setImage] = React.useState<File>();
+  const { executeAxios } = useAxios();
 
   const navigate = useNavigate();
 
@@ -25,21 +27,13 @@ export default function New() {
     data.append('body', body);
     image && data.append('image', image);
 
-    try {
-      await axios({
-        url: `${process.env.REACT_APP_API_URL}/posts`,
-        method: 'POST',
-        data,
-      });
-
+    executeAxios<PostProps>({
+      url: `${process.env.REACT_APP_API_URL}/posts`,
+      method: 'POST',
+      data,
+    }, () => {
       navigate('/');
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log(error.response);
-      } else {
-        console.dir(error);
-      }
-    }
+    });
   }
 
   return (
