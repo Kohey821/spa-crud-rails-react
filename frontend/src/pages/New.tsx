@@ -84,7 +84,7 @@ export default function New() {
           style={{
             display: 'none',
           }}
-          accept="image/*, .pdf"
+          accept="image/*"
           onChange={
             (e) => setImage(
               e.target.files
