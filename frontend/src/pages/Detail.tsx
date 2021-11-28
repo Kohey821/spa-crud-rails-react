@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import Content from '../components/Content';
-import { Props as PostProps } from '../components/Post';
+import { PostProps } from '../types';
 import useAxios from '../hooks/useAxios';
 import {
   Image,

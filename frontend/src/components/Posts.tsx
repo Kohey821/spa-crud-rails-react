@@ -5,9 +5,8 @@ import {
   SkeletonCircle,
   SkeletonText,
 } from '@chakra-ui/react';
-import Post, {
-  Props as PostProps,
-} from './Post';
+import { PostProps } from '../types';
+import Post from './Post';
 
 export default function Posts() {
   const [posts, setPosts] = React.useState<PostProps[]>([]);

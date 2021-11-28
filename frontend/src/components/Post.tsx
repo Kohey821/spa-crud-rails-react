@@ -1,5 +1,4 @@
 import { useHref } from 'react-router-dom';
-
 import {
   Box,
   Flex,
@@ -7,16 +6,9 @@ import {
   Image,
   Text,
 } from '@chakra-ui/react';
+import { PostProps } from '../types';
 
-export interface Props {
-  [key: string]: string
-  id: string
-  title: string
-  body: string
-  image_url: string
-}
-
-export default function Post(props: Props) {
+export default function Post(props: PostProps) {
   const href = useHref(`/${props.id}`);
 
   return (
