@@ -1,4 +1,4 @@
-# SPA投函サンプル（RailsとReact）
+# SPA投函サンプル（CRUD（RailsとReact））
 
 ## セットアップ
 
