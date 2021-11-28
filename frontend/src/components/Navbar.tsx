@@ -13,7 +13,11 @@ export default function Navbar() {
       p="2"
       backdropFilter="blur(.25rem)"
     >
-      <p>SPA投函</p>
+      <Link
+        to="/"
+      >
+        SPA投函
+      </Link>
 
       <Spacer />
 
