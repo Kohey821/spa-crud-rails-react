@@ -5,14 +5,14 @@ import {
   SkeletonCircle,
   SkeletonText,
 } from '@chakra-ui/react';
-import { PostProps } from '../types';
+import { Post as PostType } from '../types';
 import Post from './Post';
 
 export default function Posts() {
-  const [posts, setPosts] = React.useState<PostProps[]>([]);
+  const [posts, setPosts] = React.useState<PostType[]>([]);
   const { executeAxios } = useAxios();
   React.useEffect(() => {
-    executeAxios<PostProps[]>({
+    executeAxios<PostType[]>({
       method: 'GET',
       url: `${process.env.REACT_APP_API_URL}/posts`,
     }, ({ data }) => {

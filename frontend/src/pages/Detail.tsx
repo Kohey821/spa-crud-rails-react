@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Content from '../components/Content';
-import { PostProps } from '../types';
+import { Post } from '../types';
 import useAxios from '../hooks/useAxios';
 import {
   Button,
@@ -14,12 +14,12 @@ export default function Detail() {
   const params = useParams();
   const postUrl = `${process.env.REACT_APP_API_URL}/posts/${params.id}`;
   const navigate = useNavigate();
-  const [post, setPost] = React.useState<PostProps>();
+  const [post, setPost] = React.useState<Post>();
   const [title, setTitle] = React.useState('詳細');
   const { executeAxios } = useAxios();
 
   React.useEffect(() => {
-    executeAxios<PostProps>({
+    executeAxios<Post>({
       method: 'GET',
       url: postUrl,
     }, ({ data }) => {
@@ -29,7 +29,7 @@ export default function Detail() {
   }, [/* eslint-disable-line react-hooks/exhaustive-deps */])
 
   const handleClickDelete = async () => {
-    executeAxios<PostProps>({
+    executeAxios<Post>({
       method: 'DELETE',
       url: postUrl,
     }, () => {

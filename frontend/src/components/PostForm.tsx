@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PostProps } from '../types';
+import { Post } from '../types';
 import {
   Button,
   FormControl,
@@ -26,7 +26,7 @@ export default function PostForm() {
     data.append('body', body);
     image && data.append('image', image);
 
-    executeAxios<PostProps>({
+    executeAxios<Post>({
       url: `${process.env.REACT_APP_API_URL}/posts`,
       method: 'POST',
       data,

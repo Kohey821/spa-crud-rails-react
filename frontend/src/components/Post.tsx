@@ -6,9 +6,9 @@ import {
   Image,
   Text,
 } from '@chakra-ui/react';
-import { PostProps } from '../types';
+import { Post as PostType } from '../types';
 
-export default function Post(props: PostProps) {
+export default function Post(props: PostType) {
   const href = useHref(`/${props.id}`);
 
   return (
