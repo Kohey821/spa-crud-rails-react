@@ -1,7 +1,8 @@
 export type PostProps = {
-  [key: string]: string
   id: string
   title: string
   body: string
-  image_url: string
+  image_url?: string
+  created_at: string
+  updated_at: string
 };
