@@ -1,21 +1,29 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Post } from '../types';
+import { Post as PostOriginal } from '../types';
 import {
   Button,
   FormControl,
   FormLabel,
   FormHelperText,
-  Input
+  Image,
+  Input,
 } from '@chakra-ui/react';
 import useAxios from '../hooks/useAxios';
 
-export default function PostForm() {
-  const [title, setTitle] = React.useState('');
-  const [body, setBody] = React.useState('');
+type Post = PostOriginal & {
+  successCallback?: () => void
+};
+
+export default function PostForm(props: Partial<Post>) {
+  const [title, setTitle] = React.useState(
+    props.title ? props.title : ''
+  );
+  const [body, setBody] = React.useState(
+    props.body ? props.body : ''
+  );
   const [image, setImage] = React.useState<File>();
   const { executeAxios } = useAxios();
-
   const navigate = useNavigate();
 
   const handlePost = async () => {
@@ -26,12 +34,22 @@ export default function PostForm() {
     data.append('body', body);
     image && data.append('image', image);
 
+    const url = `${process.env.REACT_APP_API_URL}/posts${
+      props.id ? `/${props.id}` : ''
+    }`;
+
+    const method = props.id ? 'PATCH' : 'POST';
+
     executeAxios<Post>({
-      url: `${process.env.REACT_APP_API_URL}/posts`,
-      method: 'POST',
+      url,
+      method,
       data,
     }, () => {
-      navigate('/');
+      if (props.id) {
+        props.successCallback && props.successCallback();
+      } else {
+        navigate('/');
+      }
     });
   }
 
@@ -45,6 +63,7 @@ export default function PostForm() {
         <Input
           type="text"
           name="title"
+          value={title}
           onChange={
             (e) => setTitle(e.target.value)
           }
@@ -59,11 +78,19 @@ export default function PostForm() {
         <Input
           type="text"
           name="body"
+          value={body}
           onChange={
             (e) => setBody(e.target.value)
           }
         />
       </FormControl>
+
+      {props.image_url && (
+        <Image
+          src={`${process.env.REACT_APP_API_URL_ROOT}${props.image_url}`}
+          mt="2"
+        />
+      )}
 
       <FormControl mt="2">
         <input
@@ -100,7 +127,10 @@ export default function PostForm() {
       <FormControl mt="2">
         <Button
           onClick={handlePost}
-          bgGradient="linear(to-tr, pink.500, purple.500)"
+          bgGradient={
+            title && body && 'linear(to-tr, pink.500, purple.500)'
+          }
+          disabled={!(title && body)}
         >
           投函
         </Button>
