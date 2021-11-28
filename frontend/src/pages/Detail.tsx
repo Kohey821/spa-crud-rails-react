@@ -1,27 +1,42 @@
 import * as React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Content from '../components/Content';
 import { PostProps } from '../types';
 import useAxios from '../hooks/useAxios';
 import {
+  Button,
+  Flex,
   Image,
   Text,
 } from '@chakra-ui/react';
 
 export default function Detail() {
   const params = useParams();
+  const postUrl = `${process.env.REACT_APP_API_URL}/posts/${params.id}`;
+  const navigate = useNavigate();
   const [post, setPost] = React.useState<PostProps>();
   const [title, setTitle] = React.useState('詳細');
   const { executeAxios } = useAxios();
+
   React.useEffect(() => {
     executeAxios<PostProps>({
       method: 'GET',
-      url: `${process.env.REACT_APP_API_URL}/posts/${params.id}`,
+      url: postUrl,
     }, ({ data }) => {
       setPost(data);
       setTitle(data.title);
     });
   }, [/* eslint-disable-line react-hooks/exhaustive-deps */])
+
+  const handleClickDelete = async () => {
+    executeAxios<PostProps>({
+      method: 'DELETE',
+      url: postUrl,
+    }, () => {
+      // TODO: 確認を挟む
+      navigate('/');
+    });
+  };
 
   return (
     <Content
@@ -41,6 +56,23 @@ export default function Detail() {
           </Text>
         </>
       )}
+
+      <Flex
+        mt="4"
+        justifyContent="center"
+      >
+        <Button>
+          編集
+        </Button>
+
+        <Button
+          ms="2"
+          bgColor="red"
+          onClick={handleClickDelete}
+        >
+          削除
+        </Button>
+      </Flex>
     </Content>
   );
 }
