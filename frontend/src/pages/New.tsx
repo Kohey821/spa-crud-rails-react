@@ -4,7 +4,7 @@ import PostForm from '../components/PostForm';
 export default function New() {
   return (
     <Content
-      title="投函"
+      title="新規"
     >
       <PostForm />
     </Content>

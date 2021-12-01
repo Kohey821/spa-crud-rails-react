@@ -132,7 +132,7 @@ export default function PostForm(props: Partial<Post>) {
           }
           disabled={!(title && body)}
         >
-          投函
+          送信
         </Button>
       </FormControl>
     </>

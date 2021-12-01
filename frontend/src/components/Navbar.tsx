@@ -16,7 +16,7 @@ export default function Navbar() {
       <Link
         to="/"
       >
-        SPA投函
+        SPA CRUD
       </Link>
 
       <Spacer />
@@ -26,7 +26,7 @@ export default function Navbar() {
       <Box as="nav" ms="2">
         <Flex as="ul" listStyleType="none">
           <Box as="li"><Link to="/">一覧</Link></Box>
-          <Box as="li" ms="2"><Link to="/new">投函</Link></Box>
+          <Box as="li" ms="2"><Link to="/new">新規</Link></Box>
         </Flex>
       </Box>
     </Flex>
