@@ -37,8 +37,11 @@ export default function Posts() {
       {posts.length
         ? (
           <>
-            {posts.map((post) => (
-              <Box key={post.id}>
+            {posts.map((post, index) => (
+              <Box
+                key={post.id}
+                mt={index !== 0 ? '2' : ''}
+              >
                 <Post {...post} />
               </Box>
             ))}

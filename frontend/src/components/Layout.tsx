@@ -13,7 +13,10 @@ export default function Layout() {
         <Navbar />
       </Box>
 
-      <Box zIndex="1">
+      <Box
+        zIndex="1"
+        position="relative"
+      >
         <Main />
       </Box>
     </Box>

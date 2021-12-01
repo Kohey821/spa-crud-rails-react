@@ -11,7 +11,7 @@ interface Props {
 
 export default function Content(props: Props) {
   return (
-    <Box px="2" pb="2">
+    <Box>
       <Heading
         as="h1"
         mb="2"

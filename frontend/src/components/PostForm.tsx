@@ -127,9 +127,8 @@ export default function PostForm(props: Partial<Post>) {
       <FormControl mt="2">
         <Button
           onClick={handlePost}
-          bgGradient={
-            title && body && 'linear(to-tr, pink.500, purple.500)'
-          }
+          bgGradient="linear(to-tr, pink.500, purple.500)"
+          color="white"
           disabled={!(title && body)}
         >
           送信

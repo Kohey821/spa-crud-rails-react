@@ -17,6 +17,7 @@ export default function Post(props: PostType) {
       h="24"
       p="2"
       borderRadius="2"
+      shadow="md"
     >
       {props.image_url &&
         <Box as="a" href={href} w="16" flex="none">
