@@ -4,11 +4,13 @@ import {
   Box,
   SkeletonCircle,
   SkeletonText,
+  Text,
 } from '@chakra-ui/react';
 import { Post as PostType } from '../types';
 import Post from './Post';
 
 export default function Posts() {
+  const [postsAreReady, setPostsAreReady] = React.useState(false);
   const [posts, setPosts] = React.useState<PostType[]>([]);
   const { executeAxios } = useAxios();
   React.useEffect(() => {
@@ -17,6 +19,7 @@ export default function Posts() {
       url: `${process.env.REACT_APP_API_URL}/posts`,
     }, ({ data }) => {
       setPosts(data);
+      setPostsAreReady(true);
     });
   }, [/* eslint-disable-line react-hooks/exhaustive-deps */]);
 
@@ -34,19 +37,25 @@ export default function Posts() {
 
   return (
     <>
-      {posts.length
-        ? (
-          <>
-            {posts.map((post, index) => (
-              <Box
-                key={post.id}
-                mt={index !== 0 ? '2' : ''}
-              >
-                <Post {...post} />
-              </Box>
-            ))}
-          </>
-        )
+      {postsAreReady
+        ? posts.length
+          ? (
+            <>
+              {posts.map((post, index) => (
+                <Box
+                  key={post.id}
+                  mt={index !== 0 ? '2' : ''}
+                >
+                  <Post {...post} />
+                </Box>
+              ))}
+            </>
+          )
+          : (
+            <Text as="p">
+              一覧できるものがありません...
+            </Text>
+          )
         : postSkeletons
       }
     </>
