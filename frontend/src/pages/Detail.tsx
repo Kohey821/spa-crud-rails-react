@@ -88,6 +88,7 @@ export default function Detail() {
         <Button
           ms="2"
           bgColor="red"
+          color="white"
           onClick={handleClickDelete}
         >
           削除
