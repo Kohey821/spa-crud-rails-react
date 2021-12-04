@@ -2,19 +2,15 @@
 
 ## セットアップ
 
-- Railsをインストール
+### Rails
 
 ```
-docker-compose build
+chmod +x ./setup.sh && ./setup.sh
 ```
 
-- テーブルを作成
+または`./setup.sh`を一行ずつ実行する
 
-```
-docker-compose run --rm app bin/rails db:migrate
-```
-
-- Reactをインストール
+### React
 
 ```
 cd ./frontend
@@ -23,7 +19,7 @@ npm install
 
 ## 起動
 
-- コンテナを起動
+- Railsを起動
 
 ```
 docker-compose up
