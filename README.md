@@ -17,6 +17,12 @@ cd ./frontend
 npm install
 ```
 
+.env.local.defaultをコピーして.env.localを作成
+
+```
+cp .env.local.default .env.local
+```
+
 ## 起動
 
 - Railsを起動
