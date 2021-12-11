@@ -37,3 +37,5 @@ docker-compose up
 cd ./frontend
 yarn start
 ```
+
+[localhost:3000](localhost:3000)で閲覧
