@@ -1,4 +1,4 @@
-FROM ruby:3.0
+FROM ruby:3.0.2
 
 RUN apt update && apt upgrade -y && apt install -y \
   sqlite3 \
