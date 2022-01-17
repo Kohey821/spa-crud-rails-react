@@ -5,7 +5,7 @@
 ### Rails
 
 ```
-chmod +x ./setup.sh && ./setup.sh
+./setup.sh
 ```
 
 または`./setup.sh`を一行ずつ実行する
